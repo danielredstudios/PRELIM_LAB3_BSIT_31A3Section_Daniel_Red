@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Customer List";
+    var CustomerList = ViewBag.CustomerList as List<PRELIM_LAB3_BSIT_31A3Daniel_Red.Models.Customer>;
+}
+
+<div class="container my-5">
+    <h2 class="text-center text-primary mb-4">🧾 Customer List</h2>
+
+    <div class="row justify-content-center">
+        @foreach (var customer in CustomerList)
+        {
+            if (customer is PRELIM_LAB3_BSIT_31A3Daniel_Red.Models.VipCustomer vip)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card border-warning shadow-sm">
+                        <div class="card-body bg-light">
+                            <h5 class="card-title text-warning">🌟 VIP Customer</h5>
+                            <p class="card-text">@vip.GetDescription()</p>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card border-secondary shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-secondary">👤 Regular Customer</h5>
+                            <p class="card-text">@customer.GetDescription()</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
